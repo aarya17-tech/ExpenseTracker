@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker | Smart Budget Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    min-height:100vh;
+    color:white;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    margin-left:15px;
+    padding:10px 20px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    background:#3b82f6;
+}
+
+.hero{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    min-height:80vh;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero span{
+    color:#60a5fa;
+}
+
+.hero p{
+    max-width:700px;
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary{
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    color:white;
+}
+
+.secondary{
+    border:2px solid white;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+.features{
+    padding:80px 8%;
+}
+
+.features h2{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:40px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin:15px 0;
+}
+
+.card p{
+    color:#cbd5e1;
+}
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#94a3b8;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">💰 Expense Tracker</div>
+
+    <div class="nav-links">
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <h1>
+        Manage Your <span>Money Smarter</span>
+    </h1>
+
+    <p>
+        Track expenses, create monthly budgets,
+        analyze spending habits, and achieve your
+        financial goals with our intelligent budgeting platform.
+    </p>
+
+    <div class="buttons">
+        <a href="/login" class="btn primary">
+            Get Started
+        </a>
+
+        <a href="/signup" class="btn secondary">
+            Create Account
+        </a>
+    </div>
+
+</section>
+
+<section class="features">
+
+    <h2>Why Choose Us?</h2>
+
+    <div class="feature-grid">
+
+        <div class="card">
+            <h3>📊 Expense Tracking</h3>
+            <p>
+                Record and monitor daily expenses easily.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💸 Budget Planning</h3>
+            <p>
+                Set monthly budgets and control spending.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📈 Analytics</h3>
+            <p>
+                Visualize spending patterns with reports.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔒 Secure Access</h3>
+            <p>
+                JWT-based authentication for account security.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+    © 2026 Expense Tracker | Smart Budget Management System
+</footer>
+
+</body>
+</html>
