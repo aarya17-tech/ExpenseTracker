@@ -189,21 +189,27 @@ def get_current_user(
 # SIGNUP
 # ==========================================
 
-@app.get("/signup", response_class=HTMLResponse)
-def signup_page(request: Request):
-    return templates.TemplateResponse(
-        request=request,
-        name="signup.html"
-    )
-
 @app.post("/signup")
 def signup_post(
     request: Request,
     name: str = Form(...),
     email: str = Form(...),
     password: str = Form(...),
+    confirm_password: str = Form(...),
     db: Session = Depends(get_db)
 ):
+
+    # Check if passwords match
+    if password != confirm_password:
+        return templates.TemplateResponse(
+            request=request,
+            name="signup.html",
+            context={
+                "error": "Passwords do not match"
+            }
+        )
+
+    # Check if email already exists
     existing_user = db.scalars(
         select(User).where(User.email == email)
     ).first()
@@ -217,6 +223,7 @@ def signup_post(
             }
         )
 
+    # Create user
     new_user = User(
         name=name,
         email=email,
@@ -226,12 +233,11 @@ def signup_post(
     db.add(new_user)
     db.commit()
 
-    response = RedirectResponse(
+    # Redirect to login page
+    return RedirectResponse(
         url="/login",
         status_code=303
     )
-
-    return response
 
 # ==========================================
 # LOGIN

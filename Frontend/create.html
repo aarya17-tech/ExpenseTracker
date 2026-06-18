@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Add Expense | Expense Tracker</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,41 +18,94 @@
 }
 
 body{
+    background:#f5f7fb;
     min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:80px;
+    background:white;
+    box-shadow:0 2px 15px rgba(0,0,0,0.05);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 8%;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#334155;
+    margin-left:20px;
+    font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+    padding:60px 8%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero-left h1{
+    font-size:52px;
+    line-height:1.2;
+    color:#0f172a;
+    margin-bottom:20px;
+}
+
+.hero-left span{
+    color:#2563eb;
+}
+
+.hero-left p{
+    color:#64748b;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.hero-right{
     display:flex;
     justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
-    padding:20px;
 }
 
-.card{
+/* FORM CARD */
+
+.form-card{
     width:100%;
-    max-width:550px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.15);
+    max-width:500px;
+    background:white;
     border-radius:25px;
     padding:35px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
-h2{
+.form-card h2{
     text-align:center;
-    color:white;
-    margin-bottom:30px;
-    font-size:2rem;
+    color:#0f172a;
+    margin-bottom:25px;
 }
 
 .form-group{
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 label{
     display:block;
-    color:#cbd5e1;
     margin-bottom:8px;
+    color:#475569;
     font-size:14px;
+    font-weight:500;
 }
 
 input,
@@ -60,27 +113,16 @@ select,
 textarea{
     width:100%;
     padding:14px;
-    border:none;
+    border:1px solid #e2e8f0;
     border-radius:12px;
-    background:rgba(255,255,255,0.1);
-    color:white;
     font-size:15px;
-}
-
-input::placeholder,
-textarea::placeholder{
-    color:#94a3b8;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
     outline:none;
-    border:1px solid #3b82f6;
-}
-
-select option{
-    color:black;
+    border-color:#2563eb;
 }
 
 .btn-submit{
@@ -88,90 +130,205 @@ select option{
     padding:15px;
     border:none;
     border-radius:12px;
-    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    background:#2563eb;
     color:white;
     font-size:16px;
     font-weight:600;
     cursor:pointer;
-    transition:0.3s;
+    margin-top:10px;
+    transition:.3s;
 }
 
 .btn-submit:hover{
-    transform:translateY(-3px);
+    background:#1d4ed8;
 }
 
 .back-link{
     display:block;
     text-align:center;
     margin-top:20px;
-    color:#cbd5e1;
     text-decoration:none;
+    color:#2563eb;
+    font-weight:600;
 }
 
-.back-link:hover{
-    color:white;
+/* FEATURES */
+
+.features{
+    padding:20px 8% 70px;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+}
+
+.feature h3{
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#64748b;
+}
+
+@media(max-width:900px){
+
+.hero{
+    grid-template-columns:1fr;
+}
+
+.hero-left{
+    text-align:center;
+}
+
+.hero-left h1{
+    font-size:40px;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="card">
+<nav class="navbar">
 
-
-<h2>💰 Add New Expense</h2>
-
-<form action="/create" method="POST">
-
-    <div class="form-group">
-        <label>Expense Title</label>
-        <input type="text" name="title" placeholder="Food, Petrol, Shopping..." required>
+    <div class="logo">
+        💰 Expense Tracker
     </div>
 
-    <div class="form-group">
-        <label>Amount (₹)</label>
-        <input type="number" name="amount" placeholder="Enter Amount" required>
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/logout">Logout</a>
     </div>
 
-    <div class="form-group">
-        <label>Category</label>
-        <select name="category" required>
-            <option value="">Select Category</option>
-            <option>Food</option>
-            <option>Travel</option>
-            <option>Shopping</option>
-            <option>Bills</option>
-            <option>Entertainment</option>
-            <option>Education</option>
-            <option>Healthcare</option>
-            <option>Others</option>
-        </select>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1>
+            Add Your <span>Expenses</span>
+            Efficiently
+        </h1>
+
+        <p>
+            Record daily transactions, categorize spending,
+            and maintain complete visibility of your finances.
+            Stay organized and take control of your budget.
+        </p>
+
     </div>
 
-    <div class="form-group">
-        <label>Date</label>
-        <input type="date" name="date" required>
+    <div class="hero-right">
+
+        <div class="form-card">
+
+            <h2>Add New Expense</h2>
+
+            <form action="/create" method="POST">
+
+                <div class="form-group">
+                    <label>Expense Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Food, Petrol, Shopping..."
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount (₹)</label>
+                    <input
+                        type="number"
+                        name="amount"
+                        placeholder="Enter Amount"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+
+                    <select name="category" required>
+
+                        <option value="">Select Category</option>
+
+                        <option>Food</option>
+                        <option>Travel</option>
+                        <option>Shopping</option>
+                        <option>Bills</option>
+                        <option>Entertainment</option>
+                        <option>Education</option>
+                        <option>Healthcare</option>
+                        <option>Others</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+
+                    <textarea
+                        name="description"
+                        rows="4"
+                        placeholder="Expense details..."></textarea>
+                </div>
+
+                <button class="btn-submit" type="submit">
+                    Add Expense
+                </button>
+
+            </form>
+
+            <a href="/" class="back-link">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label>Description</label>
-        <textarea name="description" rows="4" placeholder="Expense details..."></textarea>
+</section>
+
+<section class="features">
+
+    <div class="features-grid">
+
+        <div class="feature">
+            <h3>📊 Smart Tracking</h3>
+            <p>Track every expense with proper categorization.</p>
+        </div>
+
+        <div class="feature">
+            <h3>💳 Budget Control</h3>
+            <p>Monitor spending and stay within your limits.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🔒 Secure Storage</h3>
+            <p>Your expense records remain securely managed.</p>
+        </div>
+
     </div>
 
-    <button type="submit" class="btn-submit">
-        Add Expense
-    </button>
-
-</form>
-
-<a href="index.html" class="back-link">
-    ← Back to Dashboard
-</a>
-
-
-</div>
+</section>
 
 </body>
 </html>
